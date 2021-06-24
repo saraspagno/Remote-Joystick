@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">JoystickAndroidApp</string>
+    <string name="connect">connect</string>
+    <string name="port">Port</string>
+    <string name="ip_address">IP Address</string>
+    <string name="throttle">← Throttle →</string>
+    <string name="rudder">← Rudder →</string>
+</resources>
