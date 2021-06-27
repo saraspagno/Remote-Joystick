@@ -23,10 +23,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(this.getSupportActionBar()!=null)
+        if(this.getSupportActionBar()!=null) {
             this.getSupportActionBar().hide();
+        }
         ActivityMainBinding act = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        //MainViewModel myMainViewModel = new MainViewModel("Enter IP Address");
     }
 
     public void connect_click(View v) {
@@ -38,8 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setSeekBar(seek_rudder, -1);
         setSeekBar(seek_throttle, 0);
         this.myJoystick = findViewById(R.id.joystick);
-        this.myJoystick.myMainViewModel = this.myMainViewModel;
-        //Log.d("CHECK", mEdit.getText().toString());
+        this.myJoystick.setMyMainViewModel(this.myMainViewModel);
     }
 
 
@@ -49,18 +48,15 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                // TODO Auto-generated method stub
             }
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-                // TODO Auto-generated method stub
             }
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 double value = min + (progress * 0.01);
-                Log.d("Joystick", "VALUE: "+value);
                 try {
                     if (min == -1) {
                         myMainViewModel.RudderChanged(value);
@@ -73,4 +69,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    @Override
+    protected void onStop() {
+       super.onStop();
+       this.myMainViewModel.end();
+    }
+
 }

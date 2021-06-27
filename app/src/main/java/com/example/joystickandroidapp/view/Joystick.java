@@ -7,21 +7,13 @@ import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.Shader;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.SeekBar;
-
-import com.example.joystickandroidapp.R;
 import com.example.joystickandroidapp.viewmodel.MainViewModel;
 
-import java.util.ArrayList;
 
 public class Joystick extends View implements View.OnTouchListener {
 
-    private Paint bigCircle;
-    private Paint mediumCircle;
-    private Paint littleCircle;
     private int medium_radius;
     private int big_radius;
     private  int little_radius;
@@ -32,8 +24,8 @@ public class Joystick extends View implements View.OnTouchListener {
     private Boolean init;
 
 
-    MainViewModel myMainViewModel;
-    //public double rudder;
+    private MainViewModel myMainViewModel;
+
     public Joystick(Context context) {
         super(context);
         initJoystick();
@@ -58,19 +50,17 @@ public class Joystick extends View implements View.OnTouchListener {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        bigCircle = new Paint();
-        bigCircle = new Paint(Paint.ANTI_ALIAS_FLAG);
+        Paint bigCircle = new Paint(Paint.ANTI_ALIAS_FLAG);
         bigCircle.setColor(Color.parseColor("#555555"));
         bigCircle.setStyle(Paint.Style.FILL_AND_STROKE);
-        mediumCircle = new Paint();
-        mediumCircle = new Paint(Paint.ANTI_ALIAS_FLAG);
+        Paint mediumCircle = new Paint(Paint.ANTI_ALIAS_FLAG);
         mediumCircle.setColor(Color.parseColor("#111111"));
         mediumCircle.setStyle(Paint.Style.FILL_AND_STROKE);
-        littleCircle = new Paint();
+        Paint littleCircle = new Paint();
         littleCircle.setShader(new LinearGradient(xPosition, yPosition, xPosition+little_radius, yPosition+little_radius, Color.parseColor("#777777"), Color.WHITE, Shader.TileMode.MIRROR));
         littleCircle.setStyle(Paint.Style.FILL);
-        x_center = (getWidth() / 2) + 50;
-        y_center = (getHeight() / 2) + 50;
+        x_center = (int)(getWidth() / 2) + 50;
+        y_center = (int)(getHeight() / 2) + 50;
         canvas.drawCircle((int) x_center, (int) y_center, big_radius,
                 bigCircle);
         canvas.drawCircle((int) x_center, (int) y_center, medium_radius,
@@ -84,12 +74,12 @@ public class Joystick extends View implements View.OnTouchListener {
             canvas.drawCircle((int) xPosition, (int) yPosition, little_radius,
                     littleCircle);
         }
-        setOnTouchListener(this);//for him to be moved
+        setOnTouchListener(this);
     }
 
 
     @Override
-    public boolean onTouch(View v, MotionEvent event) { //when we move the joystick
+    public boolean onTouch(View v, MotionEvent event) {
         float valueX, valueY=0;
         if(event.getAction() == MotionEvent.ACTION_UP) {
             xPosition = x_center;
@@ -136,5 +126,9 @@ public class Joystick extends View implements View.OnTouchListener {
             e.printStackTrace();
         }
         return true;
+    }
+
+    public void setMyMainViewModel(MainViewModel myMainViewModel) {
+        this.myMainViewModel = myMainViewModel;
     }
 }

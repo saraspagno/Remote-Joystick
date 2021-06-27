@@ -18,9 +18,8 @@ public class MainViewModel {
 
     MainModel myMainModel;
 
-    public MainViewModel(String ip_address, String port)  {
-        // TODO change the port
-        myMainModel = new MainModel(ip_address, 0);
+    public MainViewModel(String ip_address, String port) {
+        myMainModel = new MainModel(ip_address,  Integer.parseInt(port));
     }
 
     public void joystickMoved(double x, double y) throws InterruptedException {
@@ -28,11 +27,14 @@ public class MainViewModel {
     }
 
     public void RudderChanged(double value) throws InterruptedException {
-        Log.d("RUDDER", "We are in MainViewModel about to send! the value is:"+value);
         myMainModel.dispatch_rudder(value);
     }
 
     public void ThrottleChanged(double value) throws InterruptedException {
         myMainModel.dispatch_throttle(value);
+    }
+
+    public void end() {
+        this.myMainModel.disconnect();
     }
 }
