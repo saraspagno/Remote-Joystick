@@ -6,7 +6,7 @@
 This project is a remote control for the famous flight simulator [FlightGear](https://www.flightgear.org/).  After inserting the correct IP Address and Port on the app, and clicking on the "connect" button, you will be able to control the ongoing flight specifics from the Joystick and SeekBars.
 
 
-The remote control is built as an Androind Application, with backend written in `Java` and fronted as `xml`files. The app is developed using MVVM architecture.
+The remote control is built as an Androind Application, with backend written in `Java` and fronted as `xml` files. The app is developed using MVVM architecture.
 
 ## Getting Started
 
@@ -31,18 +31,19 @@ You can now check the IP of the computer running the FG by typing `ipconfig` on 
 Download this folder from Github and simply run it on Android Studio for a preview. 
 
 Start the FlighGear on flight mode together with the app.
-On the main and only activity insert the correct *IP Address* and *Port*, click on "connect" button, and start playing with the Joystick!  
-The flight functionalites controled are as follows:
+On the main and only activity insert the correct **IP Address** and **Port**, click on "connect" button, and start playing with the Joystick!    
+  
+The flight functionalites controlled are as follows:
 
-**Vertical SeekBar**: Throttle  
-**Horizontal SeekBar**: Rudder  
-**Vertical Joystick**:  Elevator  
-**Horizontal Joystick**: Aileron  
+**Throttle**: Vertical SeekBar  
+**Rudder**: Horizontal SeekBar  
+**Elevator**:  Vertical Joystick  
+**Aileron**: Horizontal Joystick  
 
-Here is a picture of the application & flight gear operating:
+Here is a picture of the application & FlightGear operating together:
 
 <kbd>
-  <img src="MediaReadMe/firstpage.PNG" width="800"/>
+  <img src="fg_and_app.jpg" width="800"/>
 </kbd>
 
 ## Deployment
@@ -55,15 +56,15 @@ Main technologies:
 
 ### MVVM Architechture & Folders
 
-Inside ... you'll find the backend code, divide into MVVM architecture as follows:
+Inside `Remote-Joystick/app/src/main/java/com/example/joystickandroidapp`, you will find the backend code, divide into MVVM architecture as follows:
 
 **Model**: the connection against the FG and the logic behind lay here.  
 **ViewModel**: data binding and intermediate amond view-model.  
 **View**: the MainActivity class and the Joystick componenet class lay here.
 
-In addition in .. you'll find the `xml` files that render the app, divided as follows:
+In addition, inside `Remote-Joystick/app/src/main/res/`, you will find all the `xml` files that render the app.
 
-I provide a UML diagram of `Java` code in the file (FlightUml.png)
+I provide a UML diagram for the backend under `uml.png`.
 
 ## Authors
 - [Sara Spagnoletto](https://github.com/saraspagno)
