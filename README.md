@@ -58,9 +58,9 @@ Main technologies:
 
 Inside `Remote-Joystick/app/src/main/java/com/example/joystickandroidapp`, you will find the backend code, divide into MVVM architecture as follows:
 
-**Model**: the connection against the FG and the logic behind lay here.  
-**ViewModel**: data binding and intermediate amond view-model.  
-**View**: the MainActivity class and the Joystick componenet class lay here.
+**Model**: here lay the connection with the FG and all the logic-behind.  
+**ViewModel**: here lay the data binding and all the intermediate relationships between View and Model.
+**View**: here lay the MainActivity class and the Joystick componenet.
 
 In addition, inside `Remote-Joystick/app/src/main/res/`, you will find all the `xml` files that render the app.
 
